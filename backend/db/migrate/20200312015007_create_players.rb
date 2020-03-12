@@ -4,6 +4,7 @@ class CreatePlayers < ActiveRecord::Migration[6.0]
       t.string :name
       t.integer :level
       t.integer :initiative_bonus
+      t.references :encounter
 
       t.timestamps
     end

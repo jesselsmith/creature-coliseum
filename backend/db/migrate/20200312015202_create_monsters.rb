@@ -5,6 +5,7 @@ class CreateMonsters < ActiveRecord::Migration[6.0]
       t.integer :initiative_bonus
       t.string :url
       t.string :name
+      t.references :encounter
 
       t.timestamps
     end
