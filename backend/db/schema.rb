@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2020_03_12_015202) do
   end
 
   create_table "monsters", force: :cascade do |t|
-    t.integer "cr"
+    t.string "cr"
     t.integer "initiative_bonus"
     t.string "url"
     t.string "name"
