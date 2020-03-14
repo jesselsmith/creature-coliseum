@@ -1,6 +1,4 @@
 class PlayersController < ApplicationController
-  respond_to :json
-
   def index
     render json: PlayerSerializer.new(Player.all)
   end
@@ -15,7 +13,7 @@ class PlayersController < ApplicationController
   end
 
   def show
-    render_player
+    render_player {}
   end
 
   def update

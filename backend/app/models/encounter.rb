@@ -13,7 +13,7 @@ class Encounter < ApplicationRecord
     else
       adjustment_table = [0.5, 1, 1.5, 2, 2.5, 3, 4, 5]
       table_index = 1
-      if self.players.size <= 3
+      if self.players.size < 3
         table_index += 1
       elsif self.players.size >= 6
         table_index -= 1
@@ -64,5 +64,9 @@ class Encounter < ApplicationRecord
     else
       diff_name[diff]
     end
+  end
+
+  def xp_per_player
+    self.xp / self.players.size
   end
 end

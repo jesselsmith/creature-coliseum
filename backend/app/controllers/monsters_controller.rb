@@ -1,6 +1,4 @@
 class MonstersController < ApplicationController
-  respond_to :json
-
   def index
     render json: MonsterSerializer.new(Monster.all)
   end

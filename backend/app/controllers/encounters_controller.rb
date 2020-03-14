@@ -1,6 +1,4 @@
 class EncountersController < ApplicationController
-  respond_to :json
-
   def index
     render json: EncounterSerializer.new(Character.all)
   end
@@ -15,7 +13,7 @@ class EncountersController < ApplicationController
   end
 
   def show
-    render_encounter
+    render_encounter {}
   end
 
   def update
@@ -43,6 +41,6 @@ class EncountersController < ApplicationController
   end
 
   def find_encounter
-    encounter.find_by(id: params[:id])
+    Encounter.find_by(id: params[:id])
   end
 end
