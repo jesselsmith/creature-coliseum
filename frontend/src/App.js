@@ -1,13 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import EncounterList from './containers/EncounterList'
 
-function App() {
-	return ( 
-			<div>
-				ENCOUNTERS 
-			</div>
-	);
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <h1>ENCOUNTERS</h1>
+        <EncounterList />
+      </div>
+    )
+  }
 }
 
 export default App;
