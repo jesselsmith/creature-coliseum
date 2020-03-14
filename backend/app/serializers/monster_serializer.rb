@@ -1,5 +1,5 @@
 class MonsterSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :cr, :name, :initiative_bonus, :url
+  attributes :name, :cr, :initiative_bonus, :url
   belongs_to :encounter
 end

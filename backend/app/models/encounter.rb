@@ -18,8 +18,7 @@ class Encounter < ApplicationRecord
       elsif self.players.size >= 6
         table_index -= 1
       end
-      buckets = [14, 10, 6, 2, 1, 0]
-      table_index += 5 - buckets.index { |bucket| self.monsters.size > bucket }
+      table_index += 5 - [14, 10, 6, 2, 1, 0].index { |bucket| self.monsters.size > bucket }
       self.xp * adjustment_table[table_index]
     end
   end

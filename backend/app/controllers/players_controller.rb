@@ -27,7 +27,7 @@ class PlayersController < ApplicationController
   private
 
   def player_params(params)
-    params.require(:player).permit(:name, :initiative_bonus, :cr, :url)
+    params.require(:player).permit(:name, :initiative_bonus, :level, :encounter_id)
   end
 
   def render_player

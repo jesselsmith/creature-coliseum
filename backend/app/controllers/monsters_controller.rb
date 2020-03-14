@@ -13,7 +13,7 @@ class MonstersController < ApplicationController
   end
 
   def show
-    render_monster
+    render_monster {}
   end
 
   def update
@@ -27,7 +27,7 @@ class MonstersController < ApplicationController
   private
 
   def Monster_params(params)
-    params.require(:monster).permit(:name, :initiative_bonus, :cr, :url)
+    params.require(:monster).permit(:name, :initiative_bonus, :cr, :url, :encounter_id)
   end
 
   def render_monster

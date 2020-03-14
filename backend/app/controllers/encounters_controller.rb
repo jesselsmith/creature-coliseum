@@ -1,6 +1,6 @@
 class EncountersController < ApplicationController
   def index
-    render json: EncounterSerializer.new(Character.all)
+    render json: EncounterSerializer.new(Encounter.all)
   end
 
   def create
