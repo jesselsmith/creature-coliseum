@@ -16,17 +16,17 @@ class EncounterList extends Component {
   render() {
     return (
       <div>
-        {this.displayEncounterList()}}
+        {this.displayEncounterList()}
       </div>
     )
   }
 }
 
 const mapStateToProps = state => {
-  return {
-    encounters: state.encounters,
-    loading: state.loading
-  }
+  return ({
+    encounters: state.encountersReducer.encounters,
+    loading: state.encountersReducer.loading
+  })
 }
 
 export default connect(mapStateToProps, { addEncounter })(EncounterList)

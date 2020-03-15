@@ -1,4 +1,4 @@
-export const encountersReducer = (state = { encounters: [], loading: false }, action) => {
+export default (state = { encounters: [], loading: false }, action) => {
   switch (action.type) {
     case 'ADD_ENCOUNTERS':
       return { ...state, encounters: [...state.encounters, ...action.encounters] }
