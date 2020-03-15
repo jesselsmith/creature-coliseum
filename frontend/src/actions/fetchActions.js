@@ -11,7 +11,7 @@ export const fetchEncounters = () => {
 }
 
 export const postEncounter = encounter => {
-  options = {
+  const options = {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

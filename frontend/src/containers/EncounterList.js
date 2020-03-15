@@ -7,9 +7,9 @@ class EncounterList extends Component {
 
   displayEncounterList = () => {
     if (this.props.loading) {
-      <h2>Encounters loading...</h2>
+      return <h2>Encounters loading...</h2>
     } else {
-      this.props.encounters.map(encounter => <Encounter encounter={encounter} key={encounter.id} />)
+      return this.props.encounters.map(encounter => <Encounter encounter={encounter} key={encounter.id} />)
     }
   }
   render() {

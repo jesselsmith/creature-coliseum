@@ -12,12 +12,7 @@ class App extends Component {
     return (
       <Router>
         <Route exact path="/" render={() => <div>Home</div>} />
-        <Route path="/encounters" render={routerProps => {
-          <div>
-            <h1>ENCOUNTERS</h1>
-            <EncounterList {...routerProps} />
-          </div>
-        }} />
+        <Route path="/encounters" render={routerProps => <EncounterList {...routerProps} />} />
       </Router>
     )
   }
