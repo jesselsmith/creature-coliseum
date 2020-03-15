@@ -1,9 +1,12 @@
-const BASE_URL = 'http://localhost:3000/'
+const BASE_URL = 'http://localhost:3001/'
 
 export const fetchEncounters = () => {
   return (dispatch) => {
     dispatch({ type: 'LOADING_ENCOUNTERS' })
-    fetch(BASE_URL + 'encounters').then(resp => resp.json())
+    fetch(BASE_URL + 'encounters').then(resp => {
+      debugger
+      //resp.json()
+    })
       .then(json => {
         dispatch({ type: 'ADD_ENCOUNTERS', encounters: json.data })
       })

@@ -9,6 +9,7 @@ class EncounterList extends Component {
     if (this.props.loading) {
       return <h2>Encounters loading...</h2>
     } else {
+      debugger
       return this.props.encounters.map(encounter => <Encounter encounter={encounter} key={encounter.id} />)
     }
   }

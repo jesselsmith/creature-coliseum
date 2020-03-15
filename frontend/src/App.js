@@ -8,11 +8,17 @@ import EncounterList from './containers/EncounterList'
 import { fetchEncounters } from './actions/fetchActions'
 
 class App extends Component {
+  componentDidMount = () => {
+    this.props.fetchEncounters()
+  }
+
   render() {
     return (
       <Router>
-        <Route exact path="/" render={() => <div>Home</div>} />
-        <Route path="/encounters" render={routerProps => <EncounterList {...routerProps} />} />
+        <div>
+          <Route exact path="/" render={() => <div>Home</div>} />
+          <Route path="/encounters" render={routerProps => <EncounterList {...routerProps} />} />
+        </div>
       </Router>
     )
   }
