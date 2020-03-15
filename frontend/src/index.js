@@ -5,9 +5,9 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux'
-import { encountersReducer } from './reducers/encountersReducer'
+import { combinedReducer } from './reducers/combinedReducer'
 
-let store = createStore(encountersReducer)
+let store = createStore(combinedReducer)
 
 ReactDOM.render(
   <Provider store={store}>
