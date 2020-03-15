@@ -6,7 +6,7 @@ import PlayerList from '../containers/PlayerList'
 const encounter = props => {
   return (
     <div>
-      <h2>{props.attributes.title}</h2>
+      <h2>{props.encounter.attributes.title}</h2>
       <div>Monster List</div>
       <div>Player List</div>
     </div>
