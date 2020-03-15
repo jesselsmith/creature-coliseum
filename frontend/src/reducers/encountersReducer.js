@@ -1,7 +1,15 @@
-const encountersReducer = (state = { encounters: [], monsters: [], players: [] }, action) => {
+const encountersReducer = (state = { encounters: [], loading: false }, action) => {
   switch (action.type) {
+    case 'ADD_ENCOUNTERS':
+      return { ...state, encounters: [...state.encounters, ...action.encounters] }
     case 'ADD_ENCOUNTER':
-      return state
+      return { ...state, encounters: [...state.encounters, action.encounter] }
+    case 'LOADING_ENCOUNTERS':
+      return {
+        ...state,
+        encounters: [...state.encounters],
+        loading: true
+      }
     default:
       return state
   }
