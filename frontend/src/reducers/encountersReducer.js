@@ -23,6 +23,8 @@ export default (state = { encounters: [], monsters: [], players: [], loading: fa
         encounters: [...state.encounters],
         loading: true
       }
+    case 'ADD_PLAYER':
+      return { ...state, players: [...state.players, action.player], loading: false }
     default:
       return state
   }

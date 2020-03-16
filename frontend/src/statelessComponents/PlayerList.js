@@ -1,14 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Player from './Player'
+import PlayerForm from '../componentsWithState/PlayerForm'
 
-export default class PlayerList extends Component {
-
-  render() {
-    return (
-      <div>
-        <h3>Players</h3>
-        {this.props.players.map(player => <Player player={player} key={player.id} />)}
-      </div>
-    )
-  }
+const playerList = props => {
+  return (
+    <div>
+      <h3>Players</h3>
+      {props.players.map(player => <Player player={player} key={player.id} />)}
+      <PlayerForm encounterId={props.encounterId} />
+    </div>
+  )
 }
+
+export default playerList

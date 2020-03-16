@@ -28,3 +28,20 @@ export const postEncounter = encounter => {
       })
   }
 }
+
+export const postPlayer = player => {
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify(player)
+  }
+  return (dispatch) => {
+    fetch(`${BASE_URL}players/`, options).then(resp => resp.json())
+      .then(json => {
+        dispatch({ type: 'ADD_PLAYER', player: json.data })
+      })
+  }
+}

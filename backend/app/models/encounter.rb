@@ -8,7 +8,7 @@ class Encounter < ApplicationRecord
   end
 
   def adjusted_xp
-    if self.players.size <= 0
+    if self.players.size <= 0 || self.monsters.size <= 0
       self.xp
     else
       adjustment_table = [0.5, 1, 1.5, 2, 2.5, 3, 4, 5]
