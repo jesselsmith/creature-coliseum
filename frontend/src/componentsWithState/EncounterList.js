@@ -43,4 +43,4 @@ const mapStateToProps = state => {
   })
 }
 
-export default connect(mapStateToProps, { addEncounter })(EncounterList)
+export default connect(mapStateToProps)(EncounterList)

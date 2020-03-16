@@ -1,14 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Monster from './Monster'
+import MonsterForm from '../componentsWithState/MonsterForm'
 
-export default class MonsterList extends Component {
-
-  render() {
-    return (
-      <div>
-        <h3>Monsters</h3>
-        {this.props.monsters.map(monster => <Monster monster={monster} key={monster.id} />)}
-      </div>
-    )
-  }
+const monsterList = props => {
+  return (
+    <div>
+      <h3>Monsters</h3>
+      {props.monsters.map(monster => <Monster monster={monster} key={monster.id} />)}
+      <MonsterForm encounterId={props.encounterId} />
+    </div>
+  )
 }
+
+export default monsterList
