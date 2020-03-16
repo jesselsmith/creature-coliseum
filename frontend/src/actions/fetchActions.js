@@ -45,3 +45,20 @@ export const postPlayer = player => {
       })
   }
 }
+
+export const postMonster = monster => {
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify(monster)
+  }
+  return (dispatch) => {
+    fetch(`${BASE_URL}monsters/`, options).then(resp => resp.json())
+      .then(json => {
+        dispatch({ type: 'ADD_MONSTER', monster: json.data })
+      })
+  }
+}
