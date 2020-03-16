@@ -7,8 +7,8 @@ const encounter = props => {
   return (
     <div>
       <h2>{props.encounter.attributes.title}</h2>
-      <div>Monster List</div>
-      <div>Player List</div>
+      <div><MonsterList monsters={props.monsters} /></div>
+      <div><PlayerList players={props.players} /></div>
     </div>
   )
 }

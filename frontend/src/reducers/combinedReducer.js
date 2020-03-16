@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import encountersReducer from './encountersReducer'
+import data from './encountersReducer'
 
 export default combineReducers({
-  encountersReducer
+  data
 })

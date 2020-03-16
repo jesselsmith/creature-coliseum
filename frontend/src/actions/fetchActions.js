@@ -5,7 +5,8 @@ export const fetchEncounters = () => {
     dispatch({ type: 'LOADING_ENCOUNTERS' })
     fetch(BASE_URL + 'encounters').then(resp => resp.json())
       .then(json => {
-        dispatch({ type: 'ADD_ENCOUNTERS', encounters: json.data })
+        const firstPlayer = json.included.findIndex(obj => obj.type === 'player')
+        dispatch({ type: 'SET_ENCOUNTERS', encounters: json.data, monsters: json.included.slice(0, firstPlayer), players: json.included.slice(firstPlayer) })
       })
   }
 }

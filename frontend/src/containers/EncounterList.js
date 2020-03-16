@@ -5,11 +5,22 @@ import { addEncounter } from '../actions/encounterActions'
 
 class EncounterList extends Component {
 
+  filterRelationships = (encounterFromList, relationshipArray) => {
+    return relationshipArray.filter(relation => relation.relationships.encounter.data.id === encounterFromList.id)
+  }
+
   displayEncounterList = () => {
     if (this.props.loading) {
       return <h2>Encounters loading...</h2>
     } else {
-      return this.props.encounters.map(encounter => <Encounter encounter={encounter} key={encounter.id} />)
+      return this.props.encounters.map(encounter => {
+        return <Encounter
+          encounter={encounter}
+          monsters={this.filterRelationships(encounter, this.props.monsters)}
+          players={this.filterRelationships(encounter, this.props.players)}
+          key={encounter.id}
+        />
+      })
     }
   }
   render() {
@@ -23,8 +34,10 @@ class EncounterList extends Component {
 
 const mapStateToProps = state => {
   return ({
-    encounters: state.encountersReducer.encounters,
-    loading: state.encountersReducer.loading
+    encounters: state.data.encounters,
+    monsters: state.data.monsters,
+    players: state.data.players,
+    loading: state.data.loading
   })
 }
 

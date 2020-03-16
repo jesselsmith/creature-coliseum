@@ -1,6 +1,6 @@
 class EncountersController < ApplicationController
   def index
-    render json: EncounterSerializer.new(Encounter.all)
+    render json: EncounterSerializer.new(Encounter.all, include: [:monsters, :players])
   end
 
   def create
@@ -17,7 +17,9 @@ class EncountersController < ApplicationController
   end
 
   def update
-    render_encounter { @encounter.update(encounter_params(params)) }
+    render_encounter { 
+      @encounter.update(encounter_params(params))
+    }
   end
 
   def destroy
@@ -32,9 +34,10 @@ class EncountersController < ApplicationController
 
   def render_encounter
     @encounter = find_encounter
+    @options = { include: [:monsters, :players] }
     if @encounter
       yield
-      render json: EncounterSerializer.new(@encounter)
+      render json: EncounterSerializer.new(@encounter, @options)
     else
       render json: { message: 'That encounter could not be found' }
     end
