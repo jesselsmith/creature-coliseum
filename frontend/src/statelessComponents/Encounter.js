@@ -1,6 +1,6 @@
 import React from 'react';
-import MonsterList from '../containers/MonsterList'
-import PlayerList from '../containers/PlayerList'
+import MonsterList from './MonsterList'
+import PlayerList from './PlayerList'
 
 
 const encounter = props => {

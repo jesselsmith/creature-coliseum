@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Monster from '../components/Monster'
+import Monster from './Monster'
 
 export default class MonsterList extends Component {
 
@@ -7,7 +7,7 @@ export default class MonsterList extends Component {
     return (
       <div>
         <h3>Monsters</h3>
-        {this.props.monsters.map(monster => <Monster monster={monster} />)}
+        {this.props.monsters.map(monster => <Monster monster={monster} key={monster.id} />)}
       </div>
     )
   }

@@ -7,7 +7,7 @@ export default class PlayerList extends Component {
     return (
       <div>
         <h3>Players</h3>
-        {this.props.players.map(player => <Player player={player} />)}
+        {this.props.players.map(player => <Player player={player} key={player.id} />)}
       </div>
     )
   }

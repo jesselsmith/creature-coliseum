@@ -66,6 +66,6 @@ class Encounter < ApplicationRecord
   end
 
   def xp_per_player
-    self.xp / self.players.size
+    self.xp / [self.players.size, 1].max
   end
 end

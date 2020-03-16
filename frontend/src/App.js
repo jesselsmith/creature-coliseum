@@ -4,7 +4,7 @@ import {
   Route
 } from 'react-router-dom';
 import { connect } from 'react-redux'
-import EncounterList from './containers/EncounterList'
+import EncounterList from './componentsWithState/EncounterList'
 import { fetchEncounters } from './actions/fetchActions'
 
 class App extends Component {

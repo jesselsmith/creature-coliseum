@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import Encounter from '../components/Encounter'
+import Encounter from '../statelessComponents/Encounter'
 import { addEncounter } from '../actions/encounterActions'
+import EncounterForm from './EncounterForm'
 
 class EncounterList extends Component {
 
@@ -27,6 +28,7 @@ class EncounterList extends Component {
     return (
       <div>
         {this.displayEncounterList()}
+        <EncounterForm />
       </div>
     )
   }
