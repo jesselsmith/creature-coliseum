@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Player from '../components/Player'
+import Player from './Player'
 
 export default class PlayerList extends Component {
 
