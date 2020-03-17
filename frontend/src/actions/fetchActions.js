@@ -1,3 +1,5 @@
+import monster from "../statelessComponents/Monster"
+
 const BASE_URL = 'http://localhost:3001/'
 
 export const fetchEncounters = () => {
@@ -5,8 +7,16 @@ export const fetchEncounters = () => {
     dispatch({ type: 'LOADING_ENCOUNTERS' })
     fetch(BASE_URL + 'encounters').then(resp => resp.json())
       .then(json => {
-        const firstPlayer = json.included.findIndex(obj => obj.type === 'player')
-        dispatch({ type: 'SET_ENCOUNTERS', encounters: json.data, monsters: json.included.slice(0, firstPlayer), players: json.included.slice(firstPlayer) })
+        const monsters = []
+        const players = []
+        json.included.forEach(element => {
+          if (element.type === 'monster') {
+            monsters.push(element)
+          } else {
+            players.push(element)
+          }
+        });
+        dispatch({ type: 'SET_ENCOUNTERS', encounters: json.data, monsters: monsters, players: players })
       })
   }
 }

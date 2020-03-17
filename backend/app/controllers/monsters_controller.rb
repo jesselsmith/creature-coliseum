@@ -6,7 +6,7 @@ class MonstersController < ApplicationController
   def create
     monster = Monster.new(Monster_params(params))
     if monster.save
-      render json: MonsterSerializer.new(Monster)
+      render json: MonsterSerializer.new(monster)
     else
       render json: { message: 'There was an error in monster creation' }
     end

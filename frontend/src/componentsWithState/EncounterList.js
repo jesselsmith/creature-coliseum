@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Encounter from '../statelessComponents/Encounter'
-import { addEncounter } from '../actions/encounterActions'
 import EncounterForm from './EncounterForm'
 
 class EncounterList extends Component {
