@@ -15,15 +15,12 @@ class EncounterList extends Component {
     } else {
       return this.props.encounters.map(encounter => {
         return (
-          <div>
-            <Encounter
-              encounter={encounter}
-              monsters={this.filterRelationships(encounter, this.props.monsters)}
-              players={this.filterRelationships(encounter, this.props.players)}
-              key={encounter.id}
-            />
-            <EncounterForm />
-          </div>
+          <Encounter
+            encounter={encounter}
+            monsters={this.filterRelationships(encounter, this.props.monsters)}
+            players={this.filterRelationships(encounter, this.props.players)}
+            key={encounter.id}
+          />
         )
       })
     }
@@ -31,8 +28,8 @@ class EncounterList extends Component {
   render() {
     return (
       <div>
-        <Route exact path={this.props.match.url} render={() => this.displayEncounterList} />
-        <Route path={`${this.props.match.url}/:encounterId`} render={routerProp => <Encounter encounter={encounters[routerProp]} />} />
+        {this.displayEncounterList()}
+        <EncounterForm />
       </div>
     )
   }

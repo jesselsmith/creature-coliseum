@@ -4,8 +4,10 @@ import {
   Route
 } from 'react-router-dom';
 import { connect } from 'react-redux'
+import EncounterPage from './statelessComponents/EncounterPage'
 import EncounterList from './componentsWithState/EncounterList'
 import { fetchEncounters } from './actions/fetchActions'
+import Encounter from './statelessComponents/Encounter'
 
 class App extends Component {
   componentDidMount = () => {
@@ -17,7 +19,7 @@ class App extends Component {
       <Router>
         <div>
           <Route exact path="/" render={() => <div>Home</div>} />
-          <Route path="/encounters" render={routerProps => <EncounterList {...routerProps} />} />
+          <Route path="/encounters" render={routerProps => <EncounterPage {...routerProps} />} />
         </div>
       </Router>
     )
@@ -25,4 +27,4 @@ class App extends Component {
 }
 
 
-export default connect(null, { fetchEncounters })(App);
+export default connect(state => ({ encounters: state.data.encounters }), { fetchEncounters })(App);
