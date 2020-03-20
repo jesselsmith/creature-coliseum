@@ -30,6 +30,13 @@ const postOptionMaker = model => {
   }
 }
 
+const DELETE_OPTIONS = {
+  method: "DELETE",
+  headers: {
+    "Accept": "application/json"
+  } 
+}
+
 export const postEncounter = encounter => {
   return (dispatch) => {
     dispatch({ type: 'LOADING_ENCOUNTERS' })
@@ -37,6 +44,24 @@ export const postEncounter = encounter => {
       .then(json => {
         dispatch({ type: 'ADD_ENCOUNTER', encounter: json.data })
       })
+  }
+}
+
+const getRelationshipIds = (modelJson, relationship) => {
+  return modelJson.data.relationships[relationship].data.map(rel => rel.id)
+}
+
+export const deleteEncounter = encounterId => {
+  return dispatch => {
+    fetch(BASE_URL + 'encounters/' + encounterId, DELETE_OPTIONS).then(resp => resp.json())
+    .then(json => {
+      dispatch({ 
+        type: 'REMOVE_ENCOUNTER', 
+        encounterId: encounterId, 
+        playerIds: getRelationshipIds(json, 'players'), 
+        monsterIds: getRelationshipIds(json, 'monsters')
+      })
+    })
   }
 }
 
@@ -60,7 +85,11 @@ export const postPlayer = player => {
   }
 }
 
-
+export const deletePlayer = playerId => {
+  return dispatch => {
+    fetch(`${BASE_URL}players/${playerId}`)
+  }
+}
 
 export const postMonster = monster => {
   return (dispatch) => {

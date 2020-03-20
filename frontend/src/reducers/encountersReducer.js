@@ -23,7 +23,15 @@ export default (state = { encounters: [], monsters: [], players: [], loading: tr
     case 'LOADING_ENCOUNTERS':
       return {...state, loading: true }
     case 'UPDATE_ENCOUNTER':
-      return {...state, encounters: updateEncounter(state.encounters, action.encounter), loading: false} 
+      return {...state, encounters: updateEncounter(state.encounters, action.encounter), loading: false}
+      case 'REMOVE_ENCOUNTER':
+        return {
+          ...state,
+          encounters: state.encounters.filter(encounter => encounter.id !== action.encounterId),
+          players: state.players.filter(player => !action.playerIds.includes(player.id)),
+          monsters: state.monsters.filter(monster => !action.monsterIds.includes(monster.id)),
+          loading: false
+        }
     case 'ADD_PLAYER':
       return { 
         ...state, 
