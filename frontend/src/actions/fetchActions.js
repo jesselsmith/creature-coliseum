@@ -55,10 +55,7 @@ export const postPlayer = player => {
   return (dispatch) => {
     fetch(`${BASE_URL}players/`, postOptionMaker(player)).then(resp => resp.json())
       .then(json => {
-        dispatch({ type: 'ADD_PLAYER', player: json.data })
-      })
-      .then(() => {
-        fetchEncounter(dispatch, player.player.encounter_id)
+        dispatch({ type: 'ADD_PLAYER', player: json.data, encounter: json.included[0] })
       })
   }
 }
@@ -69,10 +66,7 @@ export const postMonster = monster => {
   return (dispatch) => {
     fetch(`${BASE_URL}monsters/`, postOptionMaker(monster)).then(resp => resp.json())
       .then(json => {
-        dispatch({ type: 'ADD_MONSTER', monster: json.data })
-      })
-      .then(() => {
-        fetchEncounter(dispatch, monster.monster.encounter_id)
+        dispatch({ type: 'ADD_MONSTER', monster: json.data, encounter: json.included[0] })
       })
   }
 }

@@ -6,7 +6,7 @@ class MonstersController < ApplicationController
   def create
     monster = Monster.new(Monster_params(params))
     if monster.save
-      render json: MonsterSerializer.new(monster)
+      render json: MonsterSerializer.new(monster, { include: [:encounter] })
     else
       render json: { message: 'There was an error in monster creation' }
     end
@@ -34,7 +34,7 @@ class MonstersController < ApplicationController
     @monster = find_monster
     if @monster
       yield
-      render json: MonsterSerializer.new(@monster)
+      render json: MonsterSerializer.new(@monster, { include: [:encounter] })
     else
       render json: { message: 'That monster could not be found' }
     end

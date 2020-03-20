@@ -6,7 +6,7 @@ class PlayersController < ApplicationController
   def create
     player = Player.new(player_params(params))
     if player.save
-      render json: PlayerSerializer.new(player)
+      render json: PlayerSerializer.new(player, { include: [:encounter] })
     else
       render json: { message: 'There was an error in player creation' }
     end
@@ -34,7 +34,7 @@ class PlayersController < ApplicationController
     @player = find_player
     if @player
       yield
-      render json: PlayerSerializer.new(@player)
+      render json: PlayerSerializer.new(@player, { include: [:encounter] })
     else
       render json: { message: 'That player could not be found' }
     end
