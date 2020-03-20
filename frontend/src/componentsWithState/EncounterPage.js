@@ -10,16 +10,20 @@ const encounterPage = props => {
   } else {
     return (
       <div>
-        <Route exact path={props.match.url} component={EncounterList} />
+        <Route exact path={props.match.url} render={() => <h3>Choose and Encounter from the List Below or create one</h3>} />
         <Route path={`${props.match.url}/:encounterId`}
           render={routerProp => {
             const encounter = props.encounters.find(encounter => encounter.id === routerProp.match.params.encounterId)
             return <Encounter
               encounter={encounter}
-              monsters={filterRelationships(encounter, props.monsters)}
-              players={filterRelationships(encounter, props.players)}
+              monsters={filterRelationships(encounter, this.props.monsters)}
+              players={filterRelationships(encounter, this.props.players)}
+              deleteEncounter={this.props.deleteEncounter}
+              deletePlayer={this.props.deletePlayer}
+              deleteMonster={this.props.deleteMonster}
             />
           }} />
+        <EncounterList encounters={props.encounters} loading={props.loading} />
       </div>
     )
   }
@@ -38,4 +42,4 @@ const mapStateToProps = state => {
   })
 }
 
-export default connect(mapStateToProps)(encounterPage)
+export default connect(mapStateToProps, { deleteEncounter, deletePlayer, deleteMonster })(encounterPage)

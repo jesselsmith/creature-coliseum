@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import { link } from 'react-router-dom'
 import Encounter from '../statelessComponents/Encounter'
 import EncounterForm from './EncounterForm'
 import { deleteEncounter, deletePlayer, deleteMonster } from '../actions/fetchActions'
@@ -24,15 +25,7 @@ class EncounterList extends Component {
     } else {
       return this.props.encounters.map(encounter => {
         return (
-          <Encounter
-            encounter={encounter}
-            monsters={this.filterRelationships(encounter, this.props.monsters)}
-            players={this.filterRelationships(encounter, this.props.players)}
-            deleteEncounter={this.removeEncounter}
-            deletePlayer={this.removePlayer}
-            deleteMonster={this.props.deleteMonster}
-            key={encounter.id}
-          />
+          <Link key={encounter.id} to={`/encounters/${encounter.id}`}>{encounter.title}</Link>
         )
       })
     }
@@ -40,20 +33,11 @@ class EncounterList extends Component {
   render() {
     return (
       <div>
-        {this.displayEncounterList()}
         <EncounterForm />
+        {this.displayEncounterList()}
       </div>
     )
   }
 }
 
-const mapStateToProps = state => {
-  return ({
-    encounters: state.data.encounters,
-    monsters: state.data.monsters,
-    players: state.data.players,
-    loading: state.data.loading
-  })
-}
-
-export default connect(mapStateToProps, { deleteEncounter, deletePlayer, deleteMonster })(EncounterList)
+export default EncounterList
