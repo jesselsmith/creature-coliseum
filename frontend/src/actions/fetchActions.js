@@ -87,7 +87,10 @@ export const postPlayer = player => {
 
 export const deletePlayer = playerId => {
   return dispatch => {
-    fetch(`${BASE_URL}players/${playerId}`)
+    fetch(`${BASE_URL}players/${playerId}`, DELETE_OPTIONS).then(resp => resp.json()
+    .then(json => {
+      dispatch({type: 'REMOVE_PLAYER', playerId: playerId, encounter: json.included[0]})
+    }))
   }
 }
 
