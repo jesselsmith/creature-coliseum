@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import Encounter from '../statelessComponents/Encounter'
 import { Route } from 'react-router-dom'
 import EncounterList from './EncounterList'
+import { deleteEncounter, deletePlayer, deleteMonster } from '../actions/fetchActions'
 
 const encounterPage = props => {
   if (props.loading) {
@@ -16,11 +17,11 @@ const encounterPage = props => {
             const encounter = props.encounters.find(encounter => encounter.id === routerProp.match.params.encounterId)
             return <Encounter
               encounter={encounter}
-              monsters={filterRelationships(encounter, this.props.monsters)}
-              players={filterRelationships(encounter, this.props.players)}
-              deleteEncounter={this.props.deleteEncounter}
-              deletePlayer={this.props.deletePlayer}
-              deleteMonster={this.props.deleteMonster}
+              monsters={filterRelationships(encounter, props.monsters)}
+              players={filterRelationships(encounter, props.players)}
+              deleteEncounter={props.deleteEncounter}
+              deletePlayer={props.deletePlayer}
+              deleteMonster={props.deleteMonster}
             />
           }} />
         <EncounterList encounters={props.encounters} loading={props.loading} />

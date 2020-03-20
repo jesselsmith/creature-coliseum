@@ -1,23 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Encounter from '../statelessComponents/Encounter'
 import EncounterForm from './EncounterForm'
 import { deleteEncounter, deletePlayer, deleteMonster } from '../actions/fetchActions'
 
 class EncounterList extends Component {
-
-  filterRelationships = (encounterFromList, relationshipArray) => {
-    return relationshipArray.filter(relation => relation.relationships.encounter.data.id === encounterFromList.id)
-  }
-
-  removeEncounter = encounterId => {
-    this.props.deleteEncounter(encounterId)
-  }
-
-  removePlayer = playerId => {
-    this.props.deletePlayer(playerId)
-  }
 
   displayEncounterList = () => {
     if (this.props.loading) {
@@ -25,7 +13,7 @@ class EncounterList extends Component {
     } else {
       return this.props.encounters.map(encounter => {
         return (
-          <Link key={encounter.id} to={`/encounters/${encounter.id}`}>{encounter.title}</Link>
+          <li key={encounter.id}><Link to={`/encounters/${encounter.id}`}>{encounter.attributes.title}</Link></li>
         )
       })
     }
@@ -33,8 +21,11 @@ class EncounterList extends Component {
   render() {
     return (
       <div>
+        <h2>Encounters</h2>
         <EncounterForm />
-        {this.displayEncounterList()}
+        <ul>
+          {this.displayEncounterList()}
+        </ul>
       </div>
     )
   }
