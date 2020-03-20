@@ -1,8 +1,8 @@
 class Encounter < ApplicationRecord
 
-  has_many :players
-  has_many :monsters
-
+  has_many :players, dependent: :destroy
+  has_many :monsters, dependent: :destroy
+  
   def xp
     self.monsters.sum(&:xp)
   end
