@@ -2,14 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux'
 import Encounter from '../statelessComponents/Encounter'
 import { Route } from 'react-router-dom'
-import EncounterList from '../componentsWithState/EncounterList'
+import EncounterList from './EncounterList'
 
 const encounterPage = props => {
-  return (
-    loadingEncounters(props)
-  )
-}
-const loadingEncounters = props => {
   if (props.loading) {
     return <h2>Encounters loading...</h2>
   } else {
@@ -29,6 +24,7 @@ const loadingEncounters = props => {
     )
   }
 }
+
 const filterRelationships = (encounterFromList, relationshipArray) => {
   return relationshipArray.filter(relation => relation.relationships.encounter.data.id === encounterFromList.id)
 }

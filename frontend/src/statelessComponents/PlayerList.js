@@ -6,7 +6,7 @@ const playerList = props => {
   return (
     <div>
       <h3>Players</h3>
-      {props.players.map(player => <Player player={player} key={player.id} />)}
+      {props.players.map(player => <Player player={player} key={player.id} deletePlayer={props.deletePlayer} />)}
       <PlayerForm encounterId={props.encounterId} />
     </div>
   )
