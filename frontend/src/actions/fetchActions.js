@@ -102,3 +102,12 @@ export const postMonster = monster => {
       })
   }
 }
+
+export const deleteMonster = monsterId => {
+  return dispatch => {
+    fetch(`${BASE_URL}monsters/${monsterId}`, DELETE_OPTIONS).then(resp => resp.json()
+    .then(json => {
+      dispatch({type: 'REMOVE_MONSTER', monsterId: monsterId, encounter: json.included[0]})
+    }))
+  }
+}
