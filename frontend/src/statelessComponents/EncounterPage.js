@@ -10,7 +10,7 @@ const encounterPage = props => {
   )
 }
 const loadingEncounters = props => {
-  if (props.loading || props.encounters.length <= 0) {
+  if (props.loading) {
     return <h2>Encounters loading...</h2>
   } else {
     return (

@@ -19,54 +19,60 @@ export const fetchEncounters = () => {
   }
 }
 
-export const postEncounter = encounter => {
-  const options = {
+const postOptionMaker = model => {
+  return {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       "Accept": "application/json"
     },
-    body: JSON.stringify(encounter)
+    body: JSON.stringify(model)
   }
+}
+
+export const postEncounter = encounter => {
   return (dispatch) => {
     dispatch({ type: 'LOADING_ENCOUNTERS' })
-    fetch(BASE_URL + 'encounters', options).then(resp => resp.json())
+    fetch(BASE_URL + 'encounters', postOptionMaker(encounter)).then(resp => resp.json())
       .then(json => {
         dispatch({ type: 'ADD_ENCOUNTER', encounter: json.data })
       })
   }
 }
 
+const fetchEncounter = (dispatch, encounterId) => {
+  return fetch(`${BASE_URL}encounters/${encounterId}`)
+        .then(resp => resp.json())
+        .then(json => {
+          dispatch({ 
+            type: 'UPDATE_ENCOUNTER', 
+            encounter: json.data
+          })
+        })
+}
+
 export const postPlayer = player => {
-  const options = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Accept": "application/json"
-    },
-    body: JSON.stringify(player)
-  }
   return (dispatch) => {
-    fetch(`${BASE_URL}players/`, options).then(resp => resp.json())
+    fetch(`${BASE_URL}players/`, postOptionMaker(player)).then(resp => resp.json())
       .then(json => {
         dispatch({ type: 'ADD_PLAYER', player: json.data })
+      })
+      .then(() => {
+        fetchEncounter(dispatch, player.player.encounter_id)
       })
   }
 }
 
+
+
 export const postMonster = monster => {
-  const options = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Accept": "application/json"
-    },
-    body: JSON.stringify(monster)
-  }
   return (dispatch) => {
-    fetch(`${BASE_URL}monsters/`, options).then(resp => resp.json())
+    fetch(`${BASE_URL}monsters/`, postOptionMaker(monster)).then(resp => resp.json())
       .then(json => {
         dispatch({ type: 'ADD_MONSTER', monster: json.data })
+      })
+      .then(() => {
+        fetchEncounter(dispatch, monster.monster.encounter_id)
       })
   }
 }

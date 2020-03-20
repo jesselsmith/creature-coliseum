@@ -1,4 +1,4 @@
-export default (state = { encounters: [], monsters: [], players: [], loading: false }, action) => {
+export default (state = { encounters: [], monsters: [], players: [], loading: true }, action) => {
   switch (action.type) {
     case 'SET_ENCOUNTERS':
       return {
@@ -10,10 +10,15 @@ export default (state = { encounters: [], monsters: [], players: [], loading: fa
     case 'ADD_ENCOUNTER':
       return { ...state, encounters: [...state.encounters, action.encounter], loading: false }
     case 'LOADING_ENCOUNTERS':
-      return {
-        ...state,
-        loading: true
-      }
+      return {...state, loading: true }
+    case 'UPDATE_ENCOUNTER':
+      return {...state, encounters: state.encounters.map(encounter => {
+        if(encounter.id === action.encounter.id){
+          return action.encounter
+        }else{
+          return encounter
+        }
+      })}
     case 'ADD_PLAYER':
       return { ...state, players: [...state.players, action.player], loading: false }
     case 'REMOVE_PLAYER':
