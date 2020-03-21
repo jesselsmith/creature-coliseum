@@ -1,7 +1,7 @@
 class BreedsController < ApplicationController
   def index
     if params[:search]
-      render json: BreedSerializer.new(Breed.search(params[:search]))
+      render json: BreedSerializer.new(Breed.search(search_params(params)))
     else
       render json: BreedSerializer.new(Breed.all)
     end
@@ -12,6 +12,10 @@ class BreedsController < ApplicationController
   end
 
   private
+
+  def search_params(params)
+    params.require(:search).permit(:name, :spellcaster, :monster_type, :size_category, :cr, :ac, :attack_bonus)
+  end
 
   def render_breed
     @breed = find_breed

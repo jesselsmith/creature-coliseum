@@ -9,17 +9,11 @@ class Breed < ApplicationRecord
   scope :filter_by_ac, -> (min_ac, max_ac) { where(ac: min_ac..max_ac) }
   scope :filter_by_attack_bonus, -> (min_attack_bonus, max_attack_bonus) { where(attack_bonus: min_attack_bonus..max_attack_bonus) }
   
-  def self.search( search_hash )
-    breeds = Breed.where(nil)
-    filtering_params(search_hash).each do |key, value|
+  def self.search(search_hash)
+    breeds = Breed.all
+    search_hash.each do |key, value|
       breeds = breeds.send("filter_by_#{key}", value) if value.present?
     end
     breeds
-  end
-  
-  private
-  
-  def filtering_params(params)
-    params.slice(:spellcaster, :monster_type, :size_category, :cr, :ac, :attack_bonus)
   end
 end
