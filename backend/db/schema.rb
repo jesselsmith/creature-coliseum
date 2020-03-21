@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2020_03_21_101157) do
   create_table "breeds", force: :cascade do |t|
     t.string "name"
     t.string "url"
-    t.string "type"
+    t.string "monster_type"
     t.string "cr"
     t.string "size"
     t.integer "ac"

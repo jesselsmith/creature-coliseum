@@ -3,7 +3,7 @@ class CreateBreeds < ActiveRecord::Migration[6.0]
     create_table :breeds do |t|
       t.string :name
       t.string :url
-      t.string :type
+      t.string :monster_type
       t.string :cr
       t.string :size
       t.integer :ac
