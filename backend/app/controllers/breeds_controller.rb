@@ -14,7 +14,7 @@ class BreedsController < ApplicationController
   private
 
   def search_params(params)
-    params.require(:search).permit(:name, :spellcaster, :monster_type, :size_category, :cr, :ac, :attack_bonus)
+    params.require(:search).permit(:name, :spellcaster, :monster_type, :size_category, :min_cr, :max_cr, :min_ac, :max_ac, :min_attack_bonus, :max_attack_bonus)
   end
 
   def render_breed
