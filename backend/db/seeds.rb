@@ -49,7 +49,7 @@ def make_config(breed)
     url: "https://open5e.com/monsters/#{breed['slug']}",
     monster_type: breed['type'],
     cr: breed['challenge_rating'],
-    size: breed['size'],
+    size_category: breed['size'],
     ac: breed['armor_class'],
     spellcaster: isSpellcaster?(breed),
     attack_bonus: attack_from_actions(breed['actions'])['attack_bonus'] || 0
