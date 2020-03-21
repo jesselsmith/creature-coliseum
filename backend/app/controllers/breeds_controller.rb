@@ -1,6 +1,10 @@
 class BreedsController < ApplicationController
   def index
-    render json: BreedSerializer.new(Breed.all)
+    if params[:search]
+      render json: BreedSerializer.new(Breed.search(params[:search]))
+    else
+      render json: BreedSerializer.new(Breed.all)
+    end
   end
 
   def show
