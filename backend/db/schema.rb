@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_21_101157) do
+ActiveRecord::Schema.define(version: 2020_03_21_130227) do
 
   create_table "breeds", force: :cascade do |t|
     t.string "name"
     t.string "url"
     t.string "monster_type"
     t.string "cr"
-    t.string "size"
+    t.string "size_category"
     t.integer "ac"
     t.integer "attack_bonus"
     t.boolean "spellcaster"
