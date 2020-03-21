@@ -4,8 +4,8 @@ class CreateBreeds < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :url
       t.string :monster_type
-      t.string :cr
-      t.string :size
+      t.float :cr
+      t.string :size_category
       t.integer :ac
       t.integer :attack_bonus
       t.boolean :spellcaster

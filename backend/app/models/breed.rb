@@ -9,7 +9,7 @@ class Breed < ApplicationRecord
   scope :filter_by_monster_type, -> (monster_type) { where(monster_type: monster_type) }
   scope :filter_by_size_category, -> (size_category) { where(size_category: size_category) }
   scope :filter_by_min_cr, -> (min_cr) { where('cr >= ?', min_cr) }
-  scope :filer_by_max_cr, -> (max_cr) { where('cr <= ?', max_cr) }
+  scope :filter_by_max_cr, -> (max_cr) { where('cr <= ?', max_cr) }
   scope :filter_by_min_ac, -> (min_ac) { where('ac >= ?', min_ac) }
   scope :filter_by_max_ac, -> (max_ac) { where('ac <= ?', max_ac) }
   scope :filter_by_min_attack_bonus, -> (min_attack_bonus) { where('attack_bonus >= ?', min_attack_bonus) }

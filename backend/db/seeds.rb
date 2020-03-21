@@ -48,7 +48,7 @@ def make_config(breed)
     name: breed['name'],
     url: "https://open5e.com/monsters/#{breed['slug']}",
     monster_type: breed['type'],
-    cr: breed['challenge_rating'],
+    cr: breed['challenge_rating'].to_r.to_f,
     size_category: breed['size'],
     ac: breed['armor_class'],
     spellcaster: isSpellcaster?(breed),
