@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  url: MyString
+  type: 
+  cr: 1
+  size: MyString
+  ac: 1
+  attack_bonus: 1
+  spellcaster: false
+
+two:
+  name: MyString
+  url: MyString
+  type: 
+  cr: 1
+  size: MyString
+  ac: 1
+  attack_bonus: 1
+  spellcaster: false

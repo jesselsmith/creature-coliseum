@@ -13,14 +13,18 @@ class EncounterList extends Component {
     } else {
       return this.props.encounters.map(encounter => {
         return (
-          <li key={encounter.id}><Link to={`/encounters/${encounter.id}`}>{encounter.attributes.title}</Link></li>
+          <li key={encounter.id}>
+            <Link to={`/encounters/${encounter.id}`}>
+                {encounter.attributes.title} APL: {encounter.attributes.average_player_level} Difficulty: {encounter.attributes.difficulty}
+            </Link>
+            </li>
         )
       })
     }
   }
   render() {
     return (
-      <div>
+      <div className='encounter-list'>
         <h2>Encounters</h2>
         <EncounterForm />
         <ul>

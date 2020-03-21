@@ -6,6 +6,7 @@ class CreateMonsters < ActiveRecord::Migration[6.0]
       t.string :url
       t.string :name
       t.references :encounter
+      t.references :breed
 
       t.timestamps
     end

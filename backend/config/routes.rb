@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :breeds
   resources :monsters, defaults: { format: :json }
   resources :players, defaults: { format: :json }
   resources :encounters, defaults: { format: :json }

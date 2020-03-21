@@ -161,6 +161,7 @@ DEPENDENCIES
   byebug
   fast_jsonapi
   listen (>= 3.0.5, < 3.2)
+  nokogiri
   pry
   puma (~> 4.1)
   rack-cors

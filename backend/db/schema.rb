@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_12_015202) do
+ActiveRecord::Schema.define(version: 2020_03_21_101157) do
+
+  create_table "breeds", force: :cascade do |t|
+    t.string "name"
+    t.string "url"
+    t.string "type"
+    t.string "cr"
+    t.string "size"
+    t.integer "ac"
+    t.integer "attack_bonus"
+    t.boolean "spellcaster"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "encounters", force: :cascade do |t|
     t.string "title"
@@ -24,8 +37,10 @@ ActiveRecord::Schema.define(version: 2020_03_12_015202) do
     t.string "url"
     t.string "name"
     t.integer "encounter_id"
+    t.integer "breed_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["breed_id"], name: "index_monsters_on_breed_id"
     t.index ["encounter_id"], name: "index_monsters_on_encounter_id"
   end
 

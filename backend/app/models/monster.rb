@@ -1,6 +1,7 @@
 class Monster < ApplicationRecord
   belongs_to :encounter
-
+  belongs_to :breed
+  
   def xp()
     xp_table = [10, 25, 50, 100, 200, 450, 700, 1100, 1800, 2300, 2900, 3900,
       5000, 5900, 7200, 8400, 10_000, 11_500, 13_000, 15_000, 18_000, 20_000,

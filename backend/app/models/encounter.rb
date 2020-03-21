@@ -68,4 +68,9 @@ class Encounter < ApplicationRecord
   def xp_per_player
     self.xp / [self.players.size, 1].max
   end
+
+  def average_player_level
+    return 0 if self.players.size <= 0
+    self.players.sum(&:level).to_f / self.players.size
+  end
 end
