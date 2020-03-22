@@ -23,4 +23,8 @@ class Breed < ApplicationRecord
     end
     breeds
   end
+
+  def newMonsterFromBreed(encounter_id)
+    self.monsters.build(name: self.name, url: self.url, cr: self.cr.to_r.to_s, encounter_id: encounter_id)
+  end
 end
