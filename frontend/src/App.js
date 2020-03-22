@@ -5,13 +5,13 @@ import {
 } from 'react-router-dom';
 import { connect } from 'react-redux'
 import EncounterPage from './componentsWithState/EncounterPage'
-import EncounterList from './componentsWithState/EncounterList'
 import { fetchEncounters } from './actions/fetchActions'
-import Encounter from './statelessComponents/Encounter'
+import { fetchBreeds } from './actions/breedActions'
 
 class App extends Component {
   componentDidMount = () => {
     this.props.fetchEncounters()
+    this.props.fetchBreeds()
   }
 
   render() {
