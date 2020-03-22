@@ -36,11 +36,10 @@ ActiveRecord::Schema.define(version: 2020_03_21_101157) do
     t.integer "initiative_bonus"
     t.string "url"
     t.string "name"
-    t.integer "encounter_id"
     t.integer "breed_id"
+    t.integer "encounter_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["breed_id"], name: "index_monsters_on_breed_id"
     t.index ["encounter_id"], name: "index_monsters_on_encounter_id"
   end
 

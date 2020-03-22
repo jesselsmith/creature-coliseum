@@ -4,7 +4,15 @@ class MonstersController < ApplicationController
   end
 
   def create
-    monster = Monster.new(Monster_params(params))
+    
+    if (monster_params(params)[:breed_id])
+      breed = Breed.find_by(id: monster_params(params)[:breed_id])
+      if breed
+        monster = breed.new_monster_from_breed(monster_params(params)[:encounter_id])
+      end
+    else
+      monster = Monster.new(monster_params(params))
+    end
     if monster.save
       render json: MonsterSerializer.new(monster, { include: [:encounter] })
     else
@@ -26,8 +34,8 @@ class MonstersController < ApplicationController
 
   private
 
-  def Monster_params(params)
-    params.require(:monster).permit(:name, :initiative_bonus, :cr, :url, :encounter_id)
+  def monster_params(params)
+    params.require(:monster).permit(:name, :initiative_bonus, :cr, :url, :breed_id, :encounter_id)
   end
 
   def render_monster
