@@ -26,7 +26,7 @@ class EncounterForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleOnSubmit}>
+      <form name='AddEncounter' onSubmit={this.handleOnSubmit}>
         <label>Title: </label>
         <input type='text' value={this.state.title} onChange={this.handleOnChange} />
         <input type='submit' value='Add Encounter' />

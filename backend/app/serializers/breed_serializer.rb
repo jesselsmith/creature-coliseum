@@ -4,6 +4,10 @@ class BreedSerializer
   has_many :monsters
 
   attribute :cr do |object|
-    object.cr.to_r.to_s
+    if object.cr.to_r >= 1
+      object.cr.to_i
+    else
+      object.cr.to_r
+    end
   end
 end
