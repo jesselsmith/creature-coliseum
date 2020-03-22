@@ -3,9 +3,11 @@ import { connect } from 'react-redux';
 import Breed from '../statelessComponents/Breed'
 class BreedList extends Component {
   displayBreeds = () => {
-    this.props.breeds.map(breed => {
-      <Breed key={breed.id} breed={breed} />
-    })
+    if(this.props.loading){
+      return <h3>Monsters Loading...</h3>
+    }else{
+      return this.props.breeds.map(breed => <Breed key={breed.id} breed={breed} />)
+    }
   }
 
   render(){
@@ -18,4 +20,4 @@ class BreedList extends Component {
   }
 }
 
-export default connect(state => ({breeds: state.breeds.breeds }))
+export default connect(state => ({breeds: state.breeds.breeds, loading: state.breeds.loading }))(BreedList)

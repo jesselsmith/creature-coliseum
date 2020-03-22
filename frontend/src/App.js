@@ -7,6 +7,7 @@ import { connect } from 'react-redux'
 import EncounterPage from './componentsWithState/EncounterPage'
 import { fetchEncounters } from './actions/fetchActions'
 import { fetchBreeds } from './actions/breedActions'
+import BreedList from './componentsWithState/BreedList';
 
 class App extends Component {
   componentDidMount = () => {
@@ -20,6 +21,7 @@ class App extends Component {
         <div>
           <Route exact path="/" render={() => <div>Home</div>} />
           <Route path="/encounters" render={routerProps => <EncounterPage {...routerProps} />} />
+          <Route path='/breeds' component={BreedList} />
         </div>
       </Router>
     )
@@ -27,4 +29,4 @@ class App extends Component {
 }
 
 
-export default connect(state => ({ encounters: state.data.encounters }), { fetchEncounters })(App);
+export default connect(null, { fetchEncounters, fetchBreeds })(App);

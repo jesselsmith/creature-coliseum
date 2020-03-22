@@ -9,10 +9,9 @@ const queryString = require('querystring')
 
 
 export const fetchBreeds = (searchHash = null) => {
-  debugger
   let url = BREED_URL
   if(searchHash !== null){
-    url += '?' + queryString(searchHash)
+    url += '?' + queryString.stringify(searchHash)
   }
   return dispatch => {
     dispatch({ type: 'LOADING_BREEDS' })
