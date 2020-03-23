@@ -32,7 +32,6 @@ class BreedList extends Component {
     return(
       <div>
         {(() => {
-          debugger
           if(this.state.currentPage > 1){
             return <span><button>Page 1</button><button>Previous</button></span>
           }
