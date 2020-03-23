@@ -4,7 +4,7 @@ import { postMonster } from '../actions/fetchActions'
 
 
 class MonsterForm extends Component {
-  state = {
+  state = this.props.currentState || {
     name: '',
     cr: '',
     encounter_id: this.props.encounterId
@@ -28,14 +28,22 @@ class MonsterForm extends Component {
 
   handleOnSubmit = e => {
     e.preventDefault()
-    this.props.postMonster({
-      monster: this.state
-    })
-    this.setState(prevState => ({
-      ...prevState,
-      name: '',
-      cr: ''
-    }))
+    if(this.props.method === 'POST'){
+      this.props.postMonster({
+        monster: this.state
+      })
+      this.setState(prevState => ({
+        ...prevState,
+        name: '',
+        cr: ''
+      }))
+    }else{
+      this.props.patchMonster({
+        monster: this.state,
+        id: this.props.monsterId
+      })
+      this.props.unmount()
+    }
   }
 
   render() {

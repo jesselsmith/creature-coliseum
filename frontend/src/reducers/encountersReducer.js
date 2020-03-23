@@ -1,13 +1,12 @@
-const updateEncounter = (encounterArray, updatedEncounter) => {
-  return encounterArray.map(encounter => {
-    if(encounter.id === updatedEncounter.id){
-      return updatedEncounter
+const updateModel = (modelArray, updatedModel) => {
+  return modelArray.map(model => {
+    if(model.id === updatedModel.id){
+      return updatedModel
     }else{
-      return encounter
+      return model
     }
   })
 }
-
 
 export default (state = { encounters: [], monsters: [], players: [], loading: true }, action) => {
   switch (action.type) {
@@ -23,7 +22,7 @@ export default (state = { encounters: [], monsters: [], players: [], loading: tr
     case 'LOADING_ENCOUNTERS':
       return {...state, loading: true }
     case 'UPDATE_ENCOUNTER':
-      return {...state, encounters: updateEncounter(state.encounters, action.encounter), loading: false}
+      return {...state, encounters: updateModel(state.encounters, action.encounter), loading: false}
     case 'REMOVE_ENCOUNTER':
       return {
         ...state,
@@ -36,26 +35,40 @@ export default (state = { encounters: [], monsters: [], players: [], loading: tr
       return { 
         ...state, 
         players: [...state.players, action.player],
-        encounters: updateEncounter(state.encounters, action.encounter),
+        encounters: updateModel(state.encounters, action.encounter),
+        loading: false 
+      }
+    case 'UPDATE_PLAYER':
+      return { 
+        ...state, 
+        players: updateModel(state.players, action.player),
+        encounters: updateModel(state.encounters, action.encounter),
         loading: false 
       }
     case 'REMOVE_PLAYER':
       return { 
         ...state, 
         players: state.players.filter(player => player.id !== action.playerId),
-        encounters: updateEncounter(state.encounters, action.encounter),
+        encounters: updateModel(state.encounters, action.encounter),
         loading: false }
     case 'ADD_MONSTER':
       return { 
         ...state,
         monsters: [...state.monsters, action.monster], 
-        encounters: updateEncounter(state.encounters, action.encounter),
+        encounters: updateModel(state.encounters, action.encounter),
         loading: false }
+    case 'UPDATE_MONSTER':
+      return { 
+        ...state, 
+        monsters: updateModel(state.monsters, action.monster),
+        encounters: updateModel(state.encounters, action.encounter),
+        loading: false 
+      }
     case 'REMOVE_MONSTER':
       return { 
         ...state, 
         monsters: state.monsters.filter(monster => monster.id !== action.monsterId),
-        encounters: updateEncounter(state.encounters, action.encounter),
+        encounters: updateModel(state.encounters, action.encounter),
         loading: false 
       }
     default:
