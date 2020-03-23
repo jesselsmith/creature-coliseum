@@ -10,7 +10,7 @@ class Player extends Component{
     if(this.state.showForm){
       return <PlayerForm
         encounterId={this.props.player.relationships.encounter.id}
-        method={'PATCH'}
+        method='PATCH'
         unmount={() => this.setState({showForm: false})}
         currentState={{
           name: this.props.player.attributes.name,

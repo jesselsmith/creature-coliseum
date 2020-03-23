@@ -4,7 +4,7 @@ import { postPlayer } from '../actions/fetchActions'
 
 
 class PlayerForm extends Component {
-  state = {
+  state = this.props.currentState || {
     name: '',
     level: '',
     encounter_id: this.props.encounterId
@@ -28,14 +28,30 @@ class PlayerForm extends Component {
 
   handleOnSubmit = e => {
     e.preventDefault()
-    this.props.postPlayer({
-      player: this.state
-    })
-    this.setState(prevState => ({
-      ...prevState,
-      name: '',
-      level: ''
-    }))
+    if(this.props.method === 'POST'){
+      this.props.postPlayer({
+        player: this.state
+      })
+      this.setState(prevState => ({
+        ...prevState,
+        name: '',
+        level: ''
+      }))
+    }else{
+      this.props.patchPlayer({
+        player: this.state,
+        id: this.props.playerId
+      })
+      this.props.unmount()
+    }
+  }
+
+  submitButtonValue = () => {
+    if(this.props.method === 'POST'){
+      return 'Add Player'
+    }else{
+      return 'Update Player'
+    }
   }
 
   render() {
@@ -48,7 +64,7 @@ class PlayerForm extends Component {
         <label>Level: </label>
         <input type='text' value={this.state.level} name='level' onChange={this.handleOnChange} />
 
-        <input type='submit' value='Add Player' />
+        <input type='submit' value={this.submitButtonValue()} />
       </form>
     )
   }
