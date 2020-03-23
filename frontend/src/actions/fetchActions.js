@@ -51,6 +51,7 @@ export const patchEncounter = encounter => {
   return dispatch => {
     fetch(`${BASE_URL}encounters/${encounter.id}`, optionMaker(encounter, 'PATCH')).then(resp => resp.json())
     .then(json => {
+      debugger
       dispatch({ type: 'UPDATE_ENCOUNTER', encounter: json.data })
     })
   }

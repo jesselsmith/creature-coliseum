@@ -27,8 +27,8 @@ class EncounterForm extends Component {
       this.props.patchEncounter({
         encounter: {
           title: this.state.title,
-          id: this.props.encounterId
-        }
+        },
+        id: this.props.encounterId
       })
       this.props.unmount()
     }
