@@ -6,7 +6,7 @@ import PlayerList from './PlayerList'
 const encounter = props => {
   return (
     <div>
-      <h2>{props.encounter.attributes.title}</h2>
+      <h2>{props.encounter.attributes.title}<button>✏️</button></h2>
       <button className='delete' onClick={() => props.deleteEncounter(props.encounter.id) }>X</button>
       <div>Difficulty: {props.encounter.attributes.difficulty}</div>
       <MonsterList monsters={props.monsters} encounterId={props.encounter.id} deleteMonster={props.deleteMonster}/>

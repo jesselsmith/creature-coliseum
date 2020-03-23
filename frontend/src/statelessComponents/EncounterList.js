@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-import EncounterForm from './EncounterForm'
+import EncounterForm from '../componentsWithState/EncounterForm'
 
 class EncounterList extends Component {
 
@@ -12,7 +12,7 @@ class EncounterList extends Component {
         return (
           <li key={encounter.id}>
             <Link to={`/encounters/${encounter.id}`}>
-                {encounter.attributes.title} APL: {encounter.attributes.average_player_level} Difficulty: {encounter.attributes.difficulty}
+                <button>{encounter.attributes.title} APL: {encounter.attributes.average_player_level} Difficulty: {encounter.attributes.difficulty}</button>
             </Link>
             </li>
         )
