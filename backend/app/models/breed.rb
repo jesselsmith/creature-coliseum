@@ -6,7 +6,7 @@ class Breed < ApplicationRecord
 
   scope :filter_by_name, -> (name) { where("name like ?", "%#{name}%")}
   scope :filter_by_spellcaster, -> (spellcaster) { where(spellcaster: spellcaster) }
-  scope :filter_by_monster_type, -> (monster_type) { where(monster_type: monster_type) }
+  scope :filter_by_monster_type, -> (monster_type) { where("monster_type like ?", "%#{monster_type}%") }
   scope :filter_by_size_category, -> (size_category) { where(size_category: size_category) }
   scope :filter_by_min_cr, -> (min_cr) { where('cr >= ?', min_cr) }
   scope :filter_by_max_cr, -> (max_cr) { where('cr <= ?', max_cr) }
