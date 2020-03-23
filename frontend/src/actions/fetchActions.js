@@ -94,6 +94,15 @@ export const postPlayer = player => {
   }
 }
 
+export const patchPlayer = player => {
+  return dispatch => {
+    fetch(`${BASE_URL}players/${player.id}`, optionMaker(player, 'PATCH')).then(resp => resp.json())
+    .then(json => {
+      dispatch({ type: 'UPDATE_PLAYER', player: json.data, encounter: json.included[0] })
+    })
+  }
+}
+
 export const deletePlayer = playerId => {
   return dispatch => {
     fetch(`${BASE_URL}players/${playerId}`, DELETE_OPTIONS).then(resp => resp.json()
@@ -109,6 +118,15 @@ export const postMonster = monster => {
       .then(json => {
         dispatch({ type: 'ADD_MONSTER', monster: json.data, encounter: json.included[0] })
       })
+  }
+}
+
+export const patchMonster = monster => {
+  return dispatch => {
+    fetch(`${BASE_URL}monsters/${monster.id}`, optionMaker(monster, 'PATCH')).then(resp => resp.json())
+    .then(json => {
+      dispatch({ type: 'UPDATE_MONSTER', monster: json.data, encounter: json.included[0] })
+    })
   }
 }
 
