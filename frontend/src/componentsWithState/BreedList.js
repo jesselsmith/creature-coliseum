@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Breed from '../statelessComponents/Breed'
 import BreedSearch from './BreedSearch'
 import { postMonster } from '../actions/fetchActions'
+import BreedPageButtons from '../statelessComponents/BreedPageButtons'
 
 class BreedList extends Component {
 
@@ -27,25 +28,6 @@ class BreedList extends Component {
     }
   }
 
-  displayPageButtons = () => {
-    const numPage = (this.props.breeds.length / this.PAGE_LENGTH + 1)
-    return(
-      <div>
-        {(() => {
-          if(this.state.currentPage > 1){
-            return <span><button>Page 1</button><button>Previous</button></span>
-          }
-        })()}
-        <button>Page {this.state.currentPage}</button>
-        {(() =>{
-          if(this.state.currentPage !== numPage){
-            return <span><button>Next</button><button>Page {numPage}</button></span>
-          }
-        })()}
-      </div>
-    )
-  }
-
   render(){
     return(
       <div className='breed-list'>
@@ -67,7 +49,7 @@ class BreedList extends Component {
             {this.displayBreeds()}
           </tbody>
         </table>
-        {this.displayPageButtons()}
+        <BreedPageButtons numEntries={this.props.breeds.length} entriesPerPage={this.PAGE_LENGTH} currentPage={this.state.currentPage} />
       </div>
       
     )
