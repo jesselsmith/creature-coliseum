@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import Encounter from '../statelessComponents/Encounter'
 import { Route } from 'react-router-dom'
-import EncounterList from './EncounterList'
+import EncounterList from '../statelessComponents/EncounterList'
 import { deleteEncounter, deletePlayer, deleteMonster } from '../actions/fetchActions'
 import BreedList from './BreedList'
 
