@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import Encounter from './Encounter'
+import Encounter from '../componentsWithState/Encounter'
 import { Route } from 'react-router-dom'
-import EncounterList from '../statelessComponents/EncounterList'
+import EncounterList from './EncounterList'
 import { deleteEncounter, deletePlayer, deleteMonster } from '../actions/fetchActions'
-import BreedList from './BreedList'
+import BreedList from '../componentsWithState/BreedList'
 
 class EncounterPage extends Component{
   filterRelationships = (encounterFromList, relationshipArray) => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import Player from './Player'
+import Player from '../componentsWithState/Player'
 import PlayerForm from '../componentsWithState/PlayerForm'
 
 const playerList = props => {

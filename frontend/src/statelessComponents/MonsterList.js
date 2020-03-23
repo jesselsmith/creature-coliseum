@@ -1,5 +1,5 @@
 import React from 'react';
-import Monster from './Monster'
+import Monster from '../componentsWithState/Monster'
 import MonsterForm from '../componentsWithState/MonsterForm'
 
 const monsterList = props => {

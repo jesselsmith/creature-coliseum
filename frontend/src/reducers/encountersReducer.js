@@ -1,6 +1,5 @@
 const updateEncounter = (encounterArray, updatedEncounter) => {
   return encounterArray.map(encounter => {
-    debugger
     if(encounter.id === updatedEncounter.id){
       return updatedEncounter
     }else{
