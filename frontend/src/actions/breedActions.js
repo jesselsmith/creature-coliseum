@@ -17,7 +17,6 @@ export const fetchBreeds = (searchHash = null) => {
     dispatch({ type: 'LOADING_BREEDS' })
     fetch(url).then(resp => resp.json())
     .then(json => {
-      debugger
       return dispatch({type: 'SET_BREEDS', breeds: json.data})
     })
   }

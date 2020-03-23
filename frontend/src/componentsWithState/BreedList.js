@@ -9,8 +9,7 @@ class BreedList extends Component {
   PAGE_LENGTH = 25
 
   state = {
-    currentPage: 1,
-    numPage: this.props.breeds.length / this.PAGE_LENGTH + 1
+    currentPage: 1
   }
 
   addMonsterFromBreed = breedId => {
@@ -29,17 +28,19 @@ class BreedList extends Component {
   }
 
   displayPageButtons = () => {
+    const numPage = (this.props.breeds.length / this.PAGE_LENGTH + 1)
     return(
       <div>
         {(() => {
-          if(this.state.numPage > 1){
+          debugger
+          if(this.state.currentPage > 1){
             return <span><button>Page 1</button><button>Previous</button></span>
           }
         })()}
-        <button>Page {this.currentPage}</button>
+        <button>Page {this.state.currentPage}</button>
         {(() =>{
-          if(this.currentPage !== this.state.numPage){
-            return <span><button>Next</button><button>Page {this.state.numPage}</button></span>
+          if(this.state.currentPage !== numPage){
+            return <span><button>Next</button><button>Page {numPage}</button></span>
           }
         })()}
       </div>
