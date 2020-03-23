@@ -6,13 +6,13 @@ const breedPageButtons = props => {
     <div>
       {(() => {
         if(props.currentPage > 1){
-          return <span><button>Page 1</button><button>Previous</button></span>
+          return <span><button onClick={() => props.changePage(1)}>Page 1</button><button onClick={() => props.changePage(props.currentPage - 1)}>Previous</button></span>
         }
       })()}
       <button>Page {props.currentPage}</button>
       {(() =>{
         if(props.currentPage !== numPage){
-          return <span><button>Next</button><button>Page {numPage}</button></span>
+          return <span><button onClick={() => props.changePage(props.currentPage + 1)}>Next</button><button onClick={() => props.changePage(numPage)}>Page {numPage}</button></span>
         }
       })()}
     </div>

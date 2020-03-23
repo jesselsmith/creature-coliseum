@@ -17,6 +17,12 @@ class BreedList extends Component {
     this.props.postMonster({ breed_id: breedId, encounter_id: this.props.encounterId })
   }
 
+  setPage = pageNumber => {
+    this.setState({
+      currentPage: pageNumber
+    })
+  }
+
   displayBreeds = () => {
     if(this.props.loading){
       return <tr><td>Monsters Loading...</td></tr>
@@ -49,7 +55,7 @@ class BreedList extends Component {
             {this.displayBreeds()}
           </tbody>
         </table>
-        <BreedPageButtons numEntries={this.props.breeds.length} entriesPerPage={this.PAGE_LENGTH} currentPage={this.state.currentPage} />
+        <BreedPageButtons numEntries={this.props.breeds.length} entriesPerPage={this.PAGE_LENGTH} currentPage={this.state.currentPage} changePage={this.setPage} />
       </div>
       
     )
