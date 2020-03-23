@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import Encounter from '../statelessComponents/Encounter'
+import Encounter from './Encounter'
 import { Route } from 'react-router-dom'
 import EncounterList from '../statelessComponents/EncounterList'
 import { deleteEncounter, deletePlayer, deleteMonster } from '../actions/fetchActions'

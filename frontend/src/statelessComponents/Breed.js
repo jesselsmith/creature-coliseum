@@ -2,7 +2,6 @@ import React from 'react';
 
 const breed = props => {
   const breed = props.breed.attributes
-  debugger
   return (
     <tr>
       <td><button className='add-monster-btn'

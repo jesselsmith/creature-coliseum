@@ -5,7 +5,7 @@ import { postEncounter, patchEncounter } from '../actions/fetchActions'
 
 class EncounterForm extends Component {
   state = {
-    title: ''
+    title: this.props.currentTitle || ''
   }
 
   handleOnChange = e => {
@@ -20,15 +20,26 @@ class EncounterForm extends Component {
       this.props.postEncounter({
         encounter: this.state
       })
+      this.setState({
+        title: ''
+      })
     }else{
       this.props.patchEncounter({
-        encounter: this.state
+        encounter: {
+          title: this.state.title,
+          id: this.props.encounterId
+        }
       })
+      this.props.unmount()
     }
-    
-    this.setState({
-      title: ''
-    })
+  }
+
+  submitButtonValue = () => {
+    if(this.props.method === 'POST'){
+      return 'Add Encounter'
+    }else{
+      return 'Update Title'
+    }
   }
 
   render() {
@@ -36,7 +47,7 @@ class EncounterForm extends Component {
       <form name='encounterForm' onSubmit={this.handleOnSubmit}>
         <label>Title: </label>
         <input type='text' value={this.state.title} onChange={this.handleOnChange} />
-        <input type='submit' value='Add Encounter' />
+        <input type='submit' value={this.submitButtonValue()} />
       </form>
     )
   }
