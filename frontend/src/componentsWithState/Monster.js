@@ -30,7 +30,7 @@ class Monster extends Component{
   }
 
   render(){
-    {displayInfoOrForm}
+    return this.displayInfoOrForm()
   }
 
 }
