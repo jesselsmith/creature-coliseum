@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { postMonster } from '../actions/fetchActions'
+import { postMonster, patchMonster } from '../actions/fetchActions'
 
 
 class MonsterForm extends Component {
@@ -46,6 +46,14 @@ class MonsterForm extends Component {
     }
   }
 
+  submitButtonValue = () => {
+    if(this.props.method === 'POST'){
+      return 'Add Monster'
+    }else{
+      return 'Update Monster'
+    }
+  }
+
   render() {
     return (
       <form onSubmit={this.handleOnSubmit}>
@@ -56,10 +64,10 @@ class MonsterForm extends Component {
         <label>cr: </label>
         <input type='text' value={this.state.cr} name='cr' onChange={this.handleOnChange} />
 
-        <input type='submit' value='Add Monster' />
+        <input type='submit' value={this.submitButtonValue()} />
       </form>
     )
   }
 }
 
-export default connect(null, { postMonster })(MonsterForm)
+export default connect(null, { postMonster, patchMonster })(MonsterForm)
