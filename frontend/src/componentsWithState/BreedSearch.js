@@ -79,12 +79,12 @@ class BreedSearch extends Component{
           </select>
           <select name='size_category' value={this.state.size_category} onChange={this.handleChange}>
             <option value=''>Any Size</option>
-            <option value="tiny">Tiny</option>
-            <option value="small">Small</option>
-            <option value="medium">Medium</option>
-            <option value="large">Large</option>
-            <option value="huge">Huge</option>
-            <option value="gargantuan">Gargantuan</option>
+            <option value="Tiny">Tiny</option>
+            <option value="Small">Small</option>
+            <option value="Medium">Medium</option>
+            <option value="Large">Large</option>
+            <option value="Huge">Huge</option>
+            <option value="Gargantuan">Gargantuan</option>
           </select>
           <label htmlFor='spellcaster'>Spellcaster?</label>
           <select name='spellcaster' value={this.state.spellcaster} onChange={this.handleChange}>
