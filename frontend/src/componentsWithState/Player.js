@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PlayerForm from './PlayerForm'
+import EditButton from '../statelessComponents/EditButton'
 
 
 class Player extends Component{

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { postPlayer } from '../actions/fetchActions'
+import { postPlayer, patchPlayer } from '../actions/fetchActions'
 
 
 class PlayerForm extends Component {
@@ -70,4 +70,4 @@ class PlayerForm extends Component {
   }
 }
 
-export default connect(null, { postPlayer })(PlayerForm)
+export default connect(null, { postPlayer, patchPlayer })(PlayerForm)
