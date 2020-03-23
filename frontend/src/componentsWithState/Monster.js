@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MonsterForm from './MonsterForm'
-
+import EditButton from '../statelessComponents/EditButton'
 class Monster extends Component{
   state = {
     showForm: false
@@ -23,6 +23,7 @@ class Monster extends Component{
       return (
         <div>
           {this.props.monster.attributes.name}, CR: {this.props.monster.attributes.cr}
+          <EditButton edit={() =>{this.setState({showForm: true})}} />
           <button onClick={() => this.props.deleteMonster(this.props.monster.id)} >X</button>
         </div >
       )
