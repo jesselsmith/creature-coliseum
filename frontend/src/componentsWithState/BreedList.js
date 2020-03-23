@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Breed from '../statelessComponents/Breed'
+import BreedSearch from './BreedSearch'
 import { postMonster } from '../actions/fetchActions'
 
 class BreedList extends Component {
@@ -32,6 +33,7 @@ class BreedList extends Component {
         <table>
           <thead>
             <tr>
+              <th></th>
               <th>Name</th>
               <th>CR</th>
               <th>Type</th>

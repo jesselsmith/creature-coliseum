@@ -6,7 +6,7 @@ const breed = props => {
     <tr>
       <td><button className='add-monster-btn'
         onClick={() => props.addMonster(props.breed.id)}>Add</button></td>
-      <td><a href={breed.url} target='_blank'>{breed.name}</a></td>
+      <td><a href={breed.url} target='_blank' rel="noopener noreferrer">{breed.name}</a></td>
       <td>{breed.cr}</td>
       <td>{breed.monster_type}</td>
       <td>{breed.size_category}</td>
