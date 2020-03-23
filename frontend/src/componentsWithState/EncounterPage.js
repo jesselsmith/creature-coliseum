@@ -45,7 +45,7 @@ class EncounterPage extends Component{
   }
 
   render(){
-    return displayEncounter()
+    return this.displayEncounter()
   }
   
 }
