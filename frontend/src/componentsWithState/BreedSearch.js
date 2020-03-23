@@ -52,7 +52,7 @@ class BreedSearch extends Component{
   }
 
   handleChange = e => {
-    this.setState(prev => ({ ...prev, [e.target.name]: e.target.value }))
+    this.setState({ [e.target.name]: e.target.value })
   }
 
   render(){
@@ -86,7 +86,7 @@ class BreedSearch extends Component{
             <option value="huge">Huge</option>
             <option value="gargantuan">Gargantuan</option>
           </select>
-          <label for='spellcaster'>Spellcaster?</label>
+          <label htmlFor='spellcaster'>Spellcaster?</label>
           <select name='spellcaster' value={this.state.spellcaster} onChange={this.handleChange}>
             <option value=''>Any</option>
             <option value="true">true</option>

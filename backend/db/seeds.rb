@@ -18,7 +18,9 @@ breed_array = []
 end
 
 def isSpellcaster?(breed)
-  unless breed['special_abilities'].empty?
+  if breed['special_abilities'].blank?
+    false
+  else
     breed['special_abilities'].any? do |ability|
       ability['name'].include?('Spellcasting')
     end
