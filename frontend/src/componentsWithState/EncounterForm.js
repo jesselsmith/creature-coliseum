@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { postEncounter } from '../actions/fetchActions'
+import { postEncounter, patchEncounter } from '../actions/fetchActions'
 
 
 class EncounterForm extends Component {
@@ -16,9 +16,16 @@ class EncounterForm extends Component {
 
   handleOnSubmit = e => {
     e.preventDefault()
-    this.props.postEncounter({
-      encounter: this.state
-    })
+    if(this.props.method === 'POST'){
+      this.props.postEncounter({
+        encounter: this.state
+      })
+    }else{
+      this.props.patchEncounter({
+        encounter: this.state
+      })
+    }
+    
     this.setState({
       title: ''
     })
@@ -26,7 +33,7 @@ class EncounterForm extends Component {
 
   render() {
     return (
-      <form name='AddEncounter' onSubmit={this.handleOnSubmit}>
+      <form name='encounterForm' onSubmit={this.handleOnSubmit}>
         <label>Title: </label>
         <input type='text' value={this.state.title} onChange={this.handleOnChange} />
         <input type='submit' value='Add Encounter' />
@@ -35,4 +42,4 @@ class EncounterForm extends Component {
   }
 }
 
-export default connect(null, { postEncounter })(EncounterForm)
+export default connect(null, { postEncounter, patchEncounter })(EncounterForm)

@@ -1,12 +1,13 @@
 import React from 'react';
 import MonsterList from './MonsterList'
 import PlayerList from './PlayerList'
+import EditButton from './EditButton'
 
 
 const encounter = props => {
   return (
     <div>
-      <h2>{props.encounter.attributes.title}</h2><button className='edit' onClick={() => {props.editTitle()}}><span role="img" aria-label="edit">✏️</span></button>
+      <h2>{props.encounter.attributes.title}</h2><EditButton edit={props.editTitle} />
       <button className='delete' onClick={() => props.deleteEncounter(props.encounter.id) }>X</button>
       <div>Difficulty: {props.encounter.attributes.difficulty}</div>
       <MonsterList monsters={props.monsters} encounterId={props.encounter.id} deleteMonster={props.deleteMonster}/>

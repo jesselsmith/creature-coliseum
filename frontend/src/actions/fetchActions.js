@@ -19,9 +19,9 @@ export const fetchEncounters = () => {
   }
 }
 
-const postOptionMaker = model => {
+const optionMaker = (model, method = 'POST') => {
   return {
-    method: "POST",
+    method: method,
     headers: {
       "Content-Type": "application/json",
       "Accept": "application/json"
@@ -40,10 +40,19 @@ const DELETE_OPTIONS = {
 export const postEncounter = encounter => {
   return (dispatch) => {
     dispatch({ type: 'LOADING_ENCOUNTERS' })
-    fetch(BASE_URL + 'encounters', postOptionMaker(encounter)).then(resp => resp.json())
+    fetch(BASE_URL + 'encounters', optionMaker(encounter)).then(resp => resp.json())
       .then(json => {
         dispatch({ type: 'ADD_ENCOUNTER', encounter: json.data })
       })
+  }
+}
+
+export const patchEncounter = encounter => {
+  return dispatch => {
+    fetch(`${BASE_URL}encounters/${encounter.id}`, optionMaker(encounter, 'PATCH')).then(resp => resp.json())
+    .then(json => {
+      dispatch({ type: 'UPDATE_ENCOUNTER', encounter: json.data })
+    })
   }
 }
 
@@ -78,7 +87,7 @@ const fetchEncounter = (dispatch, encounterId) => {
 
 export const postPlayer = player => {
   return (dispatch) => {
-    fetch(`${BASE_URL}players/`, postOptionMaker(player)).then(resp => resp.json())
+    fetch(`${BASE_URL}players/`, optionMaker(player)).then(resp => resp.json())
       .then(json => {
         dispatch({ type: 'ADD_PLAYER', player: json.data, encounter: json.included[0] })
       })
@@ -96,7 +105,7 @@ export const deletePlayer = playerId => {
 
 export const postMonster = monster => {
   return (dispatch) => {
-    fetch(`${BASE_URL}monsters/`, postOptionMaker(monster)).then(resp => resp.json())
+    fetch(`${BASE_URL}monsters/`, optionMaker(monster)).then(resp => resp.json())
       .then(json => {
         dispatch({ type: 'ADD_MONSTER', monster: json.data, encounter: json.included[0] })
       })
