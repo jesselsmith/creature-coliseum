@@ -57,6 +57,12 @@ def make_config(breed)
 end
 
 breed_array.each do |breed|
-  Breed.create(make_config(breed))
+  if breed['name'] == 'Vampire Spawn'
+    vs = make_config(breed)
+    vs[:attack_bonus] = 6
+    Breed.create(vs)
+  else
+    Breed.create(make_config(breed))
+  end
 end
 

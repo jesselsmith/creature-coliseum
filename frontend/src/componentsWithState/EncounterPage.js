@@ -4,6 +4,7 @@ import Encounter from '../statelessComponents/Encounter'
 import { Route } from 'react-router-dom'
 import EncounterList from './EncounterList'
 import { deleteEncounter, deletePlayer, deleteMonster } from '../actions/fetchActions'
+import BreedList from './BreedList'
 
 const encounterPage = props => {
   if (props.loading) {
@@ -15,14 +16,22 @@ const encounterPage = props => {
         <Route path={`${props.match.url}/:encounterId`}
           render={routerProp => {
             const encounter = props.encounters.find(encounter => encounter.id === routerProp.match.params.encounterId)
-            return <Encounter
-              encounter={encounter}
-              monsters={filterRelationships(encounter, props.monsters)}
-              players={filterRelationships(encounter, props.players)}
-              deleteEncounter={props.deleteEncounter}
-              deletePlayer={props.deletePlayer}
-              deleteMonster={props.deleteMonster}
-            />
+            return (
+              <div>
+                <div className='breed-list'>
+                  <BreedList encounterId={encounter.id} />
+                </div>
+                <Encounter
+                  encounter={encounter}
+                  monsters={filterRelationships(encounter, props.monsters)}
+                  players={filterRelationships(encounter, props.players)}
+                  deleteEncounter={props.deleteEncounter}
+                  deletePlayer={props.deletePlayer}
+                  deleteMonster={props.deleteMonster}
+                />
+              </div>
+            )
+            
           }} />
         <EncounterList encounters={props.encounters} loading={props.loading} />
       </div>

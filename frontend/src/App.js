@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
-  Route
+  Route,
+  Link
 } from 'react-router-dom';
 import { connect } from 'react-redux'
 import EncounterPage from './componentsWithState/EncounterPage'
@@ -19,7 +20,13 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Route exact path="/" render={() => <div>Home</div>} />
+          <Route exact path="/" render={() => {
+          return(
+          <div>Home
+          <Link to='/encounters'>Encounters</Link>
+          <Link to='/breeds'>Breeds</Link>
+          </div>
+          )}} />
           <Route path="/encounters" render={routerProps => <EncounterPage {...routerProps} />} />
           <Route path='/breeds' component={BreedList} />
         </div>
