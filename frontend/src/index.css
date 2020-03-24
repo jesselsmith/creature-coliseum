@@ -11,8 +11,96 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+a{
+  text-decoration: none;
+  font-weight: bold;
+  color: #4DC7FF;
+}
+.navbar {
+  display: table;
+  position: fixed;
+  top: 0;
+  background-color: #f5ca78;
+  height: 12vh;
+  width: 100vw;
+}
+.logo {
+  height: 12vh;
+  padding: 0px;
+  margin: 0px;
+}
 
+.navlist {
+  list-style-type: none;
+  margin: 0px;
+}
 
-.breed-list{
+.encounter-list {
+  list-style-type: none;
+  text-align: left;
+}
+
+.dragon {
   float: right;
+  height: 70vh;
+}
+
+.nav-li {
+  display: table-cell;
+  font-size: 1.5em;
+  background: #f5ca78;
+  text-align: center;
+  width: 20%;
+  vertical-align: middle;
+}
+.navlink {
+  display: block;
+  padding: 10% 5%;
+}
+.navlink:hover{
+  background: #884400;
+}
+
+.encounter{
+  float: left;
+  clear: left;
+}
+.encounter-title {
+  display: inline;
+}
+
+.encounter-header {
+  display: inline;
+}
+.breed-list{
+  display: block;
+}
+
+tr:nth-child(even){
+  background: #f5ca78;
+}
+tr:nth-child(odd){
+  background: #f5e5ac;
+}
+
+button{
+  background: #f5d59f;
+}
+.add-monster-btn {
+  background: #f5b477;
+}
+.delete-btn{
+  background: rgb(187, 3, 3);
+}
+.main{
+  margin-top: 13vh;
+}
+
+.edit {
+  font-size: .5em;
+  background: white;
+}
+
+input[type='submit'] {
+  background: #4DC7FF;
 }

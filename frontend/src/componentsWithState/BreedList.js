@@ -69,7 +69,7 @@ class BreedList extends Component {
 
   generateClassName = () => {
     if(this.props.url.includes('monster')){
-      return 'monster-list'
+      return 'monster-list main'
     }else{
       return 'breed-list'
     }

@@ -11,35 +11,47 @@ class EncounterPage extends Component{
     return relationshipArray.filter(relation => relation.relationships.encounter.data.id === encounterFromList.id)
   }
 
+  generateEncounterList =() => {
+    return <EncounterList encounters={this.props.encounters} loading={this.props.loading} />
+  }
+
   displayEncounter = () => {
     if (this.props.loading) {
-      return <h2>Encounters loading...</h2>
+      return <h2 className='main'>Encounters loading...</h2>
     } else {
       return (
-        <div>
-          <Route exact path={this.props.match.url} render={() => <h3>Choose an Encounter from the List Below or Create One</h3>} />
+        <div className='main'>
+          <Route exact path={this.props.match.url} render={() => {
+            return(
+              <div>
+                <h3>Choose an Encounter from the List Below or Create One</h3>
+                {this.generateEncounterList()}
+              </div>
+            )
+          }} />
           <Route path={`${this.props.match.url}/:encounterId`}
             render={routerProp => {
-              debugger
               const encounter = this.props.encounters.find(encounter => encounter.id === routerProp.match.params.encounterId)
               return (
                 <div>
+                  <div className='encounter'>
+                    <Encounter
+                      encounter={encounter}
+                      monsters={this.filterRelationships(encounter, this.props.monsters)}
+                      players={this.filterRelationships(encounter, this.props.players)}
+                      deleteEncounter={this.props.deleteEncounter}
+                      deletePlayer={this.props.deletePlayer}
+                      deleteMonster={this.props.deleteMonster}
+                    />
+                    {this.generateEncounterList()}
+                  </div>
                   <div className='breed-list'>
                     <BreedList encounterId={encounter.id} url={routerProp.match.url} />
                   </div>
-                  <Encounter
-                    encounter={encounter}
-                    monsters={this.filterRelationships(encounter, this.props.monsters)}
-                    players={this.filterRelationships(encounter, this.props.players)}
-                    deleteEncounter={this.props.deleteEncounter}
-                    deletePlayer={this.props.deletePlayer}
-                    deleteMonster={this.props.deleteMonster}
-                  />
                 </div>
               )
-              
             }} />
-          <EncounterList encounters={this.props.encounters} loading={this.props.loading} />
+          
         </div>
       )
     }

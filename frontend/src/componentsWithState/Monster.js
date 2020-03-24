@@ -24,7 +24,7 @@ class Monster extends Component{
         <div>
           {this.props.monster.attributes.name}, CR: {this.props.monster.attributes.cr}
           <EditButton edit={() =>{this.setState({showForm: true})}} />
-          <button onClick={() => this.props.deleteMonster(this.props.monster.id)} >X</button>
+          <button onClick={() => this.props.deleteMonster(this.props.monster.id)} className='delete-btn'>X</button>
         </div >
       )
     }

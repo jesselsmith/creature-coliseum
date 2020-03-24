@@ -19,16 +19,11 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <NavBar />
         <Router>
           <div>
-            <Route exact path="/" component={Home} />
-            <Route path="/encounters" render={routerProps => <EncounterPage {...routerProps} />} />
-            <Route path='/monsters' render={routerProps => <BreedList url={routerProps.match.url} />} />
+            <Route path="/" render={routerProps => <NavBar {...routerProps} />} />
           </div>
         </Router>
-      </div>
     )
   }
 }

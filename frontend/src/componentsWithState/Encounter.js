@@ -14,7 +14,7 @@ class Encounter extends Component{
   displayTitleOrForm = () => {
     if(this.state.showForm){
       return(
-        <div>Edit Title:
+        <div>
           <EncounterForm 
             method={'PATCH'}
             encounterId={this.props.encounter.id}
@@ -25,8 +25,8 @@ class Encounter extends Component{
       )
     }else{
       return(
-        <div>
-          <h2>{this.props.encounter.attributes.title}</h2>
+        <div className='encounter-title'>
+          <h2 className='encounter-header'>{this.props.encounter.attributes.title}</h2>
           <EditButton edit={() =>{this.setState({showForm: true})}} />
         </div>
       )
@@ -35,9 +35,9 @@ class Encounter extends Component{
 
   render() {
     return (
-      <div>
+      <div className="encounter">
         {this.displayTitleOrForm()}
-        <button className='delete' onClick={() => this.props.deleteEncounter(this.props.encounter.id) }>X</button>
+        <button className='delete-btn' onClick={() => this.props.deleteEncounter(this.props.encounter.id) }>X</button>
         <div>Difficulty: {this.props.encounter.attributes.difficulty}</div>
         <MonsterList monsters={this.props.monsters} encounterId={this.props.encounter.id} deleteMonster={this.props.deleteMonster}/>
         <PlayerList players={this.props.players} encounterId={this.props.encounter.id} deletePlayer={this.props.deletePlayer} />

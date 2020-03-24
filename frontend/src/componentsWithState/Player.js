@@ -26,7 +26,7 @@ class Player extends Component{
         <div>
           {this.props.player.attributes.name}, Level: { this.props.player.attributes.level}
           <EditButton edit={() =>{this.setState({showForm: true})}} />
-          <button onClick={() => this.props.deletePlayer(this.props.player.id)} >X</button>
+          <button onClick={() => this.props.deletePlayer(this.props.player.id)} className='delete-btn'>X</button>
         </div >
       ) 
     }

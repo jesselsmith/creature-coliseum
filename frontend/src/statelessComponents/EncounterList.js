@@ -24,7 +24,8 @@ class EncounterList extends Component {
       <div className='encounter-list'>
         <h2>Encounters</h2>
         <EncounterForm method={'POST'} />
-        <ul>
+        <h3>Saved Encounters:</h3>
+        <ul className='encounter-list'>
           {this.displayEncounterList()}
         </ul>
       </div>
