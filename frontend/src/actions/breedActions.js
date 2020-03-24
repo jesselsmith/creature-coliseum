@@ -1,10 +1,5 @@
 const BREED_URL = 'http://localhost:3001/breeds'
 
-
-const OPTIONS = {
-
-}
-
 const queryString = require('querystring')
 
 

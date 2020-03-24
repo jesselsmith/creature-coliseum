@@ -74,17 +74,6 @@ export const deleteEncounter = encounterId => {
   }
 }
 
-const fetchEncounter = (dispatch, encounterId) => {
-  return fetch(`${BASE_URL}encounters/${encounterId}`)
-        .then(resp => resp.json())
-        .then(json => {
-          dispatch({ 
-            type: 'UPDATE_ENCOUNTER', 
-            encounter: json.data
-          })
-        })
-}
-
 export const postPlayer = player => {
   return (dispatch) => {
     fetch(`${BASE_URL}players/`, optionMaker(player)).then(resp => resp.json())

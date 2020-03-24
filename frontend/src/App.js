@@ -4,11 +4,8 @@ import {
   Route
 } from 'react-router-dom';
 import { connect } from 'react-redux'
-import EncounterPage from './statelessComponents/EncounterPage'
 import { fetchEncounters } from './actions/fetchActions'
 import { fetchBreeds } from './actions/breedActions'
-import BreedList from './componentsWithState/BreedList'
-import Home from './statelessComponents/Home'
 import NavBar from './componentsWithState/NavBar'
 
 class App extends Component {
