@@ -23,14 +23,47 @@ class BreedList extends Component {
     })
   }
 
+  shouldAddButton = () => {
+    return this.props.url.includes('encounters')
+  }
+
   displayBreeds = () => {
     if(this.props.loading){
       return <tr><td>Monsters Loading...</td></tr>
     }else{
       const index = this.state.currentPage * this.PAGE_LENGTH - this.PAGE_LENGTH
       return this.props.breeds.slice(index, index + this.PAGE_LENGTH).map(breed => {
-        return <Breed key={breed.id} breed={breed} addMonster={this.addMonsterFromBreed} />
+        return <Breed key={breed.id} breed={breed} shouldAddButton={this.shouldAddButton()} addMonster={this.addMonsterFromBreed} />
       })
+    }
+  }
+
+  generateTableHeaders = () => {
+    if(this.props.url.includes('monster')){
+      return (
+        <tr>
+          <th>Name</th>
+          <th>CR</th>
+          <th>Type</th>
+          <th>Size</th>
+          <th>Spell Caster?</th>
+          <th>AC</th>
+          <th>Attack Bonus</th>
+        </tr>
+      )
+    }else{
+      return (
+        <tr>
+          <th></th>
+          <th>Name</th>
+          <th>CR</th>
+          <th>Type</th>
+          <th>Size</th>
+          <th>Spell Caster?</th>
+          <th>AC</th>
+          <th>Attack Bonus</th>
+        </tr>
+      )
     }
   }
 
@@ -40,16 +73,7 @@ class BreedList extends Component {
         <BreedSearch />
         <table>
           <thead>
-            <tr>
-              <th></th>
-              <th>Name</th>
-              <th>CR</th>
-              <th>Type</th>
-              <th>Size</th>
-              <th>Spell Caster?</th>
-              <th>AC</th>
-              <th>Attack Bonus</th>
-            </tr>
+            {this.generateTableHeaders()}
           </thead>
           <tbody>
             {this.displayBreeds()}

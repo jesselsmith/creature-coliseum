@@ -17,14 +17,15 @@ class EncounterPage extends Component{
     } else {
       return (
         <div>
-          <Route exact path={this.props.match.url} render={() => <h3>Choose and Encounter from the List Below or create one</h3>} />
+          <Route exact path={this.props.match.url} render={() => <h3>Choose an Encounter from the List Below or Create One</h3>} />
           <Route path={`${this.props.match.url}/:encounterId`}
             render={routerProp => {
+              debugger
               const encounter = this.props.encounters.find(encounter => encounter.id === routerProp.match.params.encounterId)
               return (
                 <div>
                   <div className='breed-list'>
-                    <BreedList encounterId={encounter.id} />
+                    <BreedList encounterId={encounter.id} url={routerProp.match.url} />
                   </div>
                   <Encounter
                     encounter={encounter}

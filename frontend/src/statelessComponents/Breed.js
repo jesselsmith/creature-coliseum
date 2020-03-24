@@ -2,10 +2,17 @@ import React from 'react';
 
 const breed = props => {
   const breed = props.breed.attributes
+  let button = ''
+  if(props.shouldAddButton){
+    button = <td>
+      <button 
+        className='add-monster-btn' 
+        onClick={() => props.addMonster(props.breed.id)}>Add</button>
+    </td>
+  }
   return (
     <tr>
-      <td><button className='add-monster-btn'
-        onClick={() => props.addMonster(props.breed.id)}>Add</button></td>
+      {button}
       <td><a href={breed.url} target='_blank' rel="noopener noreferrer">{breed.name}</a></td>
       <td>{breed.cr}</td>
       <td>{breed.monster_type}</td>
