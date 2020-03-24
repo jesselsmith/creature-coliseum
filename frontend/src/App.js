@@ -13,6 +13,7 @@ import NavBar from './componentsWithState/NavBar'
 
 class App extends Component {
   componentDidMount = () => {
+    document.title = 'Creature Coliseum'
     this.props.fetchEncounters()
     this.props.fetchBreeds()
   }
