@@ -67,9 +67,17 @@ class BreedList extends Component {
     }
   }
 
+  generateClassName = () => {
+    if(this.props.url.includes('monster')){
+      return 'monster-list'
+    }else{
+      return 'breed-list'
+    }
+  }
+
   render(){
     return(
-      <div className='breed-list'>
+      <div className={this.generateClassName()}>
         <BreedSearch />
         <table>
           <thead>
