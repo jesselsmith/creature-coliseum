@@ -3,7 +3,7 @@ import React from 'react';
 const breedPageButtons = props => {
   const numPage = Math.floor(props.numEntries / props.entriesPerPage + 1)
   return(
-    <div>
+    <div className="breed-page-btns">
       {(() => {
         if(props.currentPage > 1){
           return <span><button onClick={() => props.changePage(1)}>Page 1</button><button onClick={() => props.changePage(props.currentPage - 1)}>Previous</button></span>
