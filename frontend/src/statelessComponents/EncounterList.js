@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import EncounterForm from '../componentsWithState/EncounterForm'
 
 class EncounterList extends Component {
-
   displayEncounterList = () => {
     if (this.props.loading) {
       return <h2>Encounters loading...</h2>
@@ -19,6 +18,7 @@ class EncounterList extends Component {
       })
     }
   }
+  
   render() {
     return (
       <div className='encounter-list'>

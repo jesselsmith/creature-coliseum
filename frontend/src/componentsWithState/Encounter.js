@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom'
 import MonsterList from '../statelessComponents/MonsterList'
 import PlayerList from '../statelessComponents/PlayerList'
 import EditButton from '../statelessComponents/EditButton'
@@ -37,7 +38,7 @@ class Encounter extends Component{
     return (
       <div className="encounter">
         {this.displayTitleOrForm()}
-        <button className='delete-btn' onClick={() => this.props.deleteEncounter(this.props.encounter.id) }>X</button>
+        <Link to="/encounters"><button className='delete-btn' onClick={() => this.props.deleteEncounter(this.props.encounter.id) }>X</button></Link>
         <div>Difficulty: {this.props.encounter.attributes.difficulty}</div>
         <MonsterList monsters={this.props.monsters} encounterId={this.props.encounter.id} deleteMonster={this.props.deleteMonster}/>
         <PlayerList players={this.props.players} encounterId={this.props.encounter.id} deletePlayer={this.props.deletePlayer} />

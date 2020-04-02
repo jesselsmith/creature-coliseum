@@ -6,7 +6,6 @@ import Home from '../statelessComponents/Home'
 import logo from '../assets/images/coliseumlogo.png'
 
 const navBar = props => {
-  debugger
   return (
     <div>
       <div className="navbar">
