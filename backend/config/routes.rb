@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: { sessions: 'sessions' }, defaults: { format: :json }
   resources :breeds, only: [:index, :show], defaults: { format: :json }
   resources :monsters, defaults: { format: :json }
   resources :players, defaults: { format: :json }

@@ -38,8 +38,9 @@ module Backend
       allow do
         origins '*'
         resource '*',
-        headers: :any,
-        methods: :any
+          headers: :any, 
+          expose: ['Authorization'],
+          methods: :any
       end
     end
   end
