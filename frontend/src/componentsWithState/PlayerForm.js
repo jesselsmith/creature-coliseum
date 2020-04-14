@@ -15,10 +15,7 @@ class PlayerForm extends Component {
       this.setState({
         encounter_id: this.props.encounterId
       })
-      console.log(this.state)
     }
-    
-    
   }
 
   handleOnChange = e => {

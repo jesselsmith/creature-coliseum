@@ -10,6 +10,14 @@ class MonsterForm extends Component {
     encounter_id: this.props.encounterId
   }
 
+  componentWillUpdate(){
+    if(this.state.encounter_id !== this.props.encounterId){
+      this.setState({
+        encounter_id: this.props.encounterId
+      })
+    }
+  }
+
   handleOnChange = e => {
     let newState = { ...this.state }
     if (e.target.name === 'name') {
