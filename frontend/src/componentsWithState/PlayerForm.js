@@ -9,6 +9,17 @@ class PlayerForm extends Component {
     level: '',
     encounter_id: this.props.encounterId
   }
+  
+  componentWillUpdate(){
+    if(this.state.encounter_id !== this.props.encounterId){
+      this.setState({
+        encounter_id: this.props.encounterId
+      })
+      console.log(this.state)
+    }
+    
+    
+  }
 
   handleOnChange = e => {
     let newState = { ...this.state }
@@ -29,6 +40,7 @@ class PlayerForm extends Component {
   handleOnSubmit = e => {
     e.preventDefault()
     if(this.props.method === 'POST'){
+      console.log(this.state)
       this.props.postPlayer({
         player: this.state
       })
